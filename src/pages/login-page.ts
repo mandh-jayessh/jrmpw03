@@ -13,6 +13,15 @@ export class LoginPage {
     this.submit = page.getByRole("button", { name: "submit" });
   }
 
+  async goto() {
+    await this.page.goto(
+      "https://practicetestautomation.com/practice-test-login/"
+    );
+    await expect(this.page).toHaveTitle(
+      "Test Login | Practice Test Automation"
+    );
+  }
+
   async fillCredentials() {
     await this.username.fill("student");
     await this.password.fill("Password123");

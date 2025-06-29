@@ -1,13 +1,17 @@
-import {BeforeAll,
+import {
+  BeforeAll,
   AfterAll,
   Before,
   After,
   AfterStep,
   Status,
-  setDefaultTimeout} from "@cucumber/cucumber"
+  setDefaultTimeout,
+} from "@cucumber/cucumber";
 
-  import { Browser, BrowserContext, chromium } from "@playwright/test";
-let browser : Browser, context : BrowserContext;
+import { Browser, BrowserContext, chromium } from "@playwright/test";
+import { LoginPage } from "../pages/login-page";
+import { LoggedInPage } from "../pages/logged-in-page";
+let browser: Browser
 setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function () {
@@ -17,6 +21,8 @@ BeforeAll(async function () {
 Before(async function () {
   this.context = await browser.newContext();
   this.page = await this.context.newPage();
+  this.logIn = new LoginPage(this.page);
+  this.loggedIn = new LoggedInPage(this.page);
 });
 
 AfterStep(async function ({ result, pickle }) {
@@ -29,10 +35,7 @@ AfterStep(async function ({ result, pickle }) {
   }
 });
 
-After(async function ({ result, pickle }) {
-//   const status = result.status;
-//   const scenarioName = pickle.name;
-//   console.log(`Scenario "${scenarioName}" ended with status: ${status}`);
+After(async function () {
   await this.page.close();
   await this.context.close();
 });
