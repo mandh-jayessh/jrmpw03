@@ -1,4 +1,4 @@
-Feature: Practice Test Automation site  Login Functionality
+Feature: Practice Test Automation site Login Functionality
 
   Background:
     Given I am on the Login Page
