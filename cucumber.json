@@ -12,6 +12,11 @@
         ],
         "formatOptions": {
             "snippetInterface": "async-await"
-        }
+        },
+        "format": [
+            "html:reports/cucumber-report.html",
+            "json:reports/cucumber-report.json",
+            "junit:reports/cucumber-report.xml"
+        ]
     }
 }

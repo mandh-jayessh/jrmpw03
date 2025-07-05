@@ -23,7 +23,6 @@ Then(/^I validate the error message is (.*)$/, async function (errorMessage: str
   await this.logIn.verifyErrorMessage(errorMessage)
 });
 
-
 Then(/^I click (.*)$/, async function (linkText: string) {
   await this.home.clickLink(linkText);
 });
