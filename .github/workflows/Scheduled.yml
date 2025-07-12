@@ -1,4 +1,4 @@
-name: Trigger Tests on Schedule
+name: Trigger Tests on Schedule and Manual
 
 on:
   workflow_dispatch:
