@@ -3,7 +3,7 @@ name: Trigger Tests on Pull Requests and Pushes to Main
 on:
   push:
     branches:
-      - github-actions
+      - main
   pull_request:
     branches:
       - main
