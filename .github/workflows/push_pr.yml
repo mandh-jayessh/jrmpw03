@@ -1,12 +1,6 @@
 name: Trigger Tests on Pull Requests and Pushes to Main
 
 on:
-<<<<<<< HEAD
-=======
-  push:
-    branches:
-      - main
->>>>>>> 9306d05ff332f9e83356427440b781316e6f64f5
   pull_request:
     branches:
       - main
