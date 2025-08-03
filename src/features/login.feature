@@ -2,7 +2,7 @@ Feature: Practice Test Automation site Login Functionality
 
   Background:
     Given I am on the Login Page
-
+  @smoke
   Scenario: Verify Login Functionality For Successful Login
     When I provide the validUser credentials and Click Submit
     Then I am logged in
