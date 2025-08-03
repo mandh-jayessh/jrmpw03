@@ -4,9 +4,12 @@
   "description": "",
   "type": "commonjs",        
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cucumber": "npx cucumber-js",
+    "smoke": "npx cucumber-js --tags '@smoke'"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Jayessh>",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
