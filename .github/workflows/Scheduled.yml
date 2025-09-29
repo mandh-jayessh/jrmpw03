@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        description: 'Enter the tags to run (comma-separated)'
+        description: 'Enter the tags to run (e.g., @smoke, @regression)'
         required: true
-        default: 'smoke'
+        default: '@smoke'
   schedule:
     - cron: '30 18 * * 0'
 
