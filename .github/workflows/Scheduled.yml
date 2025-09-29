@@ -2,8 +2,13 @@ name: Trigger Tests on Schedule and Manual
 
 on:
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Enter the tags to run (comma-separated)'
+        required: true
+        default: 'smoke'
   schedule:
-    - cron: '30 18 * * 0' 
+    - cron: '30 18 * * 0'
 
 jobs:
   test:
@@ -21,8 +26,13 @@ jobs:
         run: npm install
       - name: Install Playwright Browsers
         run: npx playwright install chromium --with-deps
+
       - name: Run Cucumber tests
-        run: npx cucumber-js
+        run: |
+          TAGS="${{ github.event.inputs.tags }}"
+          echo "Running tests with tags: $TAGS"
+          npx cucumber-js --tags $TAGS
+
       - name: Upload report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
