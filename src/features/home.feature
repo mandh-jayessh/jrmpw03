@@ -1,3 +1,4 @@
+@regression
 Feature: Practice Test Automation site Home
     
   Background:
