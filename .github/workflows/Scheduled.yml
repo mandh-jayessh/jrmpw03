@@ -7,6 +7,7 @@ on:
         description: 'Enter the tags to run (e.g., @smoke, @regression)'
         required: true
         default: '@smoke'
+        type: string
   schedule:
     - cron: '30 18 * * 0'
 
@@ -24,13 +25,15 @@ jobs:
           node-version: 'lts/*' 
       - name: Install dependencies
         run: npm install
+
       - name: Install Playwright Browsers
         run: npx playwright install chromium --with-deps
 
       - name: Run Cucumber tests
+        shell: pwsh
         run: |
-          TAGS="${{ github.event.inputs.tags }}"
-          echo "Running tests with tags: $TAGS"
+          $TAGS = "${{ github.event.inputs.tags }}"  # Correct PowerShell variable assignment
+          Write-Host "Running tests with tags: $TAGS"   # Use Write-Host instead of echo
           npx cucumber-js --tags $TAGS
 
       - name: Upload report
