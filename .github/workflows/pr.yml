@@ -1,4 +1,4 @@
-name: Trigger Tests on Pull Requests and Pushes to Main
+name: Trigger Tests on Pull Requests to Main
 
 on:
   pull_request:
