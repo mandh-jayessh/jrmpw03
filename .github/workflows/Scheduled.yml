@@ -31,9 +31,17 @@ jobs:
       - name: Run Cucumber tests
         shell: pwsh
         run: |
-          $TAGS = "${{ github.event.inputs.tags }}"  
-          Write-Host "Running tests with tags: $TAGS"  
-          npx cucumber-js --tags $TAGS
+          $TAGS = "${{ github.event.inputs.tags }}"
+          
+          Write-Host "DEBUG: Tags to be used for cucumber-js: '$TAGS'"
+
+          if (-not $TAGS) {
+            Write-Host "Running all tests"
+            npm run cucumber
+          } else {
+            Write-Host "Running tests with tags: $TAGS"
+            npx cucumber-js --tags "$TAGS"
+          }
 
       - name: Upload report
         uses: actions/upload-artifact@v4
