@@ -5,8 +5,8 @@ on:
     inputs:
       tags:
         description: 'Enter the tags to run (e.g., @smoke, @regression)'
-        required: true
-        default: '@smoke'
+        required: false
+        default: ''
         type: string
   schedule:
     - cron: '30 18 * * 0'
